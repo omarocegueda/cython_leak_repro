@@ -1,5 +1,6 @@
 import numpy as np
 import psutil
+import gc
 from example import leak, noleak
 
 def test_leak():
@@ -10,6 +11,7 @@ def test_leak():
         bcopy = b[...,1].copy()
         del bcopy
         del b
+        gc.collect()
         print('Free memory: %d %%'%(psutil.virtual_memory()[2],))
 
 
@@ -22,4 +24,5 @@ def test_noleak():
         bcopy = b[...,1].copy()
         del bcopy
         del b
+        gc.collect()
         print("Free memory: %d %%"%(psutil.virtual_memory()[2],))
