@@ -12,7 +12,7 @@ def test_leak():
         del bcopy
         del b
         gc.collect()
-        print('Free memory: %d %%'%(psutil.virtual_memory()[2],))
+        print('Used memory: %d %%'%(psutil.virtual_memory()[2],))
 
 
 def test_noleak():
@@ -25,4 +25,4 @@ def test_noleak():
         del bcopy
         del b
         gc.collect()
-        print("Free memory: %d %%"%(psutil.virtual_memory()[2],))
+        print("Used memory: %d %%"%(psutil.virtual_memory()[2],))
